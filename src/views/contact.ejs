@@ -1,0 +1,25 @@
+<%- include('includes/head') %>
+<%- include('includes/navbar') %>
+
+<div class="title">
+  <h1>Sua agenda pessoal!</h1>
+  <h2>Crie ou edite seus contatos abaixo:</h2>
+</div>
+
+<div class="container-register">
+  <form action="/contact/register" method="post">
+    <input type="hidden" name="_csrf" value = <%= csrfToken %>>
+    <label>Nome:</label>
+    <input type="text" name="name" value="">
+    <label>Sobrenome:</label>
+    <input type="text" name="surname" value="">
+    <label>Email:</label>
+    <input type="email" name="email" value="">
+    <label>Telefone:</label>
+    <input type="tel" name="telephone" value="">
+    <button>Salvar</button>
+  </form>
+</div>
+
+<%- include('includes/messages') %>
+<%- include('includes/footer') %>

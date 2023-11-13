@@ -1,0 +1,9 @@
+<%- include('includes/head') %> <%- include('includes/navbar') %>
+
+<div class="title">
+  <h1>Olá <%= user.name %>!</h1>
+  <h2>Você precisa <a class="link logout" href="/login/logout">sair</a> para criar uma nova conta!</h2>
+</div>
+
+<%- include('includes/messages') %>
+<%- include('includes/footer') %>

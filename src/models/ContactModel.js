@@ -18,12 +18,18 @@ class Contact {
     this.contact = null;
   }
 
+  async searchId(id) {
+    if (typeof id !== 'string') return;
+    const user = await ContactModel.findById(id);
+    return user;
+  }
+
   async register() {
     this.validate();
 
     if (this.errors.length > 0) return;
 
-    this.contato = await ContactModel.create(this.body);
+    this.contact = await ContactModel.create(this.body);
   }
 
   validate() {
@@ -34,7 +40,9 @@ class Contact {
       this.errors.push('O email é inválido!');
 
     if (!this.body.telephone && !this.body.email)
-      this.errors.push('Pelo menos um contato precisa ser preenchido: email ou telefone!');
+      this.errors.push(
+        'Pelo menos um contato precisa ser preenchido: email ou telefone!'
+      );
   }
 
   cleanUp() {

@@ -5,5 +5,5 @@ import './assets/css/login.css';
 import './assets/css/navbar.css';
 import './assets/css/table.css';
 import './assets/css/message.css';
-import './assets/css/register.css';
+import './assets/css/contact.css';
 import './login';

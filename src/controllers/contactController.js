@@ -1,7 +1,7 @@
 const Contact = require('../models/ContactModel');
 
 exports.index = (req, res) => {
-  res.render('contact');
+  res.render('contact', { contact: {} });
 };
 
 exports.register = async (req, res) => {
@@ -19,11 +19,21 @@ exports.register = async (req, res) => {
 
     req.flash('success', 'Contato registrado!');
     req.session.save(function () {
-      return res.redirect('/contact');
+      return res.redirect(`/contact/${contact.contact._id}`);
     });
     return;
   } catch (error) {
     console.log(error);
     return res.render('404');
   }
+};
+
+exports.editContact = async function (req, res) {
+  if (!req.params.id) return res.render('404');
+
+  const contact = await new Contact().searchId(req.params.id);
+
+  if (!contact) return res.render('404');
+
+  res.render('contact', { contact });
 };

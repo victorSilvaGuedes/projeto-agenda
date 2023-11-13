@@ -10,10 +10,8 @@
   <nav class="navbar">
     <% if(user) {%>
       <p class="login-name">Bem vindo <%= user.name %>!</a>
-      <% }%>
-    <a class="link" href="/contact">Cadastrar contato</a>
-    <% if(user) {%>
-    <a class="link" href="/login/logout">Sair</a>
+        <a class="link" href="/contact">Cadastrar contato</a>
+        <a class="link" href="/login/logout">Sair</a>
     <% } else {%>
     <a class="link" href="/login">Entrar</a>
     <% } %>

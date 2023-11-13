@@ -17,7 +17,7 @@ class Login {
     this.user = null;
   }
 
-  validate() {
+  validateRegister() {
     this.cleanUp();
     if (this.body.name.length < 3 || this.body.name.length > 20)
       this.errors.push('O nome precisa ter de 3 a 20 caracteres!');
@@ -28,9 +28,18 @@ class Login {
     if (this.body.password.length < 3 || this.body.password.length > 50)
       this.errors.push('A senha precisa ter de 3 a 50 caracteres!');
   }
+  
+  validateLogin() {
+    this.cleanUp();
+    if (!validator.isEmail(this.body.email))
+      this.errors.push('O email é inválido!');
+
+    if (this.body.password.length < 3 || this.body.password.length > 50)
+      this.errors.push('A senha precisa ter de 3 a 50 caracteres!');
+  }
 
   async register() {
-    this.validate();
+    this.validateRegister();
     if (this.errors.length > 0) return;
 
     await this.userExists();
@@ -44,8 +53,7 @@ class Login {
   }
 
   async login() {
-    this.name = this.body.name;
-    this.validate();
+    this.validateLogin();
     if (this.errors.length > 0) return;
     this.user = await LoginModel.findOne({ email: this.body.email });
 

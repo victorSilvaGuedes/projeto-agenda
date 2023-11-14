@@ -28,7 +28,7 @@ class Login {
     if (this.body.password.length < 3 || this.body.password.length > 50)
       this.errors.push('A senha precisa ter de 3 a 50 caracteres!');
   }
-  
+
   validateLogin() {
     this.cleanUp();
     if (!validator.isEmail(this.body.email))
